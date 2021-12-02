@@ -156,3 +156,11 @@ function testTime() {
 }
 // Call on function
 testTime()
+// Save function to local storage
+$('.saveBtn').click(function() {
+    var formValue = $(this).siblings('.form-control').val()
+    console.log('Event stored in local storage')
+    var listItem = $(this).parent().data('hour')
+
+    localStorage.setItem(listItem, formValue)
+})
