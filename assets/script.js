@@ -1,4 +1,6 @@
-// Moment Real time timer for day and time, MAY NEED TO CHANGE TO CURRENT TIME SO YOU CAN SEE WHAT TIME IT WAS RECORDED
+// Recorded time on refresh so you can see what is past, present, and future
+$('#recordedTime').text(moment().format(' h:mm a'))
+// Real time timer so you can see time elapsed since recorded refresh time
 setInterval(function () {
     $('#currentDay').html(moment().format('dddd MMMM Do YYYY, h:mm:ss A'))
 }, 1000)
@@ -164,3 +166,12 @@ $('.saveBtn').click(function() {
 
     localStorage.setItem(listItem, formValue)
 })
+
+// Loop through each input area to get item from the local storage so it saves after refresh
+var x = [9, 10, 11, 12, 1, 2, 3, 4, 5]
+
+for (var i = 0; i < x.length; i++) {
+    var dataHour = localStorage.getItem(x[i])
+    // After looping this goes through each form and applies the value from dataHour
+    $('.form' + x[i]).val(dataHour)
+}
